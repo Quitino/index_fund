@@ -1,0 +1,188 @@
+/*
+ * question2report — HTML Report Design System
+ *
+ * Embed this CSS inline in the <style> tag of every generated report.
+ * All values are self-contained; no external dependencies.
+ *
+ * Usage:  Copy the contents of this file into a <style> block inside
+ *         the generated HTML report's <head>.
+ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --color-bg:          #f0f4f8;
+  --color-surface:     #ffffff;
+  --color-primary:     #1a365d;
+  --color-primary-l:   #2a4a7f;
+  --color-accent:      #2b6cb0;
+  --color-accent-l:    #3182ce;
+  --color-positive:    #27ae60;
+  --color-negative:    #e74c3c;
+  --color-neutral:     #7f8c8d;
+  --color-text:        #2d3748;
+  --color-text-muted:  #718096;
+  --color-border:      #e2e8f0;
+  --color-table-stripe:#f7fafc;
+  --color-table-hover: #edf2f7;
+
+  --shadow-card:  0 4px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
+  --radius:       12px;
+  --radius-sm:    8px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Heiti SC",
+               "Microsoft YaHei", "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background:  var(--color-bg);
+  color:       var(--color-text);
+  line-height: 1.7;
+  padding:     2rem 1rem;
+}
+
+/* ---------- Layout ---------- */
+.report-container {
+  max-width:  1100px;
+  margin:     0 auto;
+}
+
+/* ---------- Header ---------- */
+.report-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color:      #fff;
+  padding:    2.5rem 2.5rem 2rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-card);
+}
+.report-header h1 {
+  font-size:   1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.report-header .subtitle {
+  font-size:   1rem;
+  opacity:     0.85;
+  font-weight: 400;
+}
+.report-header .meta {
+  margin-top:  1rem;
+  font-size:   0.85rem;
+  opacity:     0.7;
+}
+
+/* ---------- Card ---------- */
+.card {
+  background:    var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow:    var(--shadow-card);
+  padding:       2rem 2.5rem;
+  margin-bottom: 1.5rem;
+  transition:    box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+.card h2 {
+  font-size:     1.3rem;
+  font-weight:   700;
+  color:         var(--color-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-accent-l);
+}
+.card h3 {
+  font-size:     1.05rem;
+  font-weight:   600;
+  color:         var(--color-primary-l);
+  margin: 1.2rem 0 0.6rem;
+}
+
+/* ---------- Executive Summary ---------- */
+.summary-list {
+  list-style: none;
+  padding: 0;
+}
+.summary-list li {
+  position:      relative;
+  padding-left:  1.6rem;
+  margin-bottom: 0.6rem;
+  line-height:   1.6;
+}
+.summary-list li::before {
+  content:  "▸";
+  position: absolute;
+  left:     0;
+  color:    var(--color-accent);
+  font-weight: 700;
+}
+
+/* ---------- Tables ---------- */
+table {
+  width:           100%;
+  border-collapse: separate;
+  border-spacing:  0;
+  margin:          1rem 0;
+  font-size:       0.9rem;
+}
+thead th {
+  background:    var(--color-primary);
+  color:         #fff;
+  padding:       0.75rem 1rem;
+  text-align:    left;
+  font-weight:   600;
+  white-space:   nowrap;
+}
+thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+thead th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+
+tbody td {
+  padding:       0.65rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+tbody tr:nth-child(even) { background: var(--color-table-stripe); }
+tbody tr:hover           { background: var(--color-table-hover);  }
+tbody tr:last-child td:first-child { border-radius: 0 0 0 var(--radius-sm); }
+tbody tr:last-child td:last-child  { border-radius: 0 0 var(--radius-sm) 0; }
+
+/* ---------- Conditional Colors ---------- */
+.positive { color: var(--color-positive); font-weight: 600; }
+.negative { color: var(--color-negative); font-weight: 600; }
+.neutral  { color: var(--color-neutral);  }
+
+/* ---------- Charts ---------- */
+.chart-container {
+  text-align: center;
+  margin:     1.2rem 0;
+}
+.chart-container img {
+  max-width:     100%;
+  height:        auto;
+  border-radius: var(--radius-sm);
+  border:        1px solid var(--color-border);
+}
+
+/* ---------- Footer ---------- */
+.report-footer {
+  text-align:  center;
+  padding:     1.5rem 0;
+  font-size:   0.8rem;
+  color:       var(--color-text-muted);
+  border-top:  1px solid var(--color-border);
+  margin-top:  2rem;
+}
+
+/* ---------- Utility ---------- */
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-small  { font-size: 0.85rem; color: var(--color-text-muted); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }

@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  stockanal_sys:
+    build: .
+    ports:
+      - "8888:8888"
+    env_file:
+      - .env
+    environment:
+      - FLASK_ENV=production
+      - FLASK_DEBUG=0
+      - USE_AGENT_SYSTEM=true
+      - USE_REDIS_CACHE=true
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - app_data:/app/data
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+
+volumes:
+  redis_data:
+  app_data:

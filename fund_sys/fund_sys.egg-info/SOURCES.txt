@@ -1,0 +1,7 @@
+pyproject.toml
+fund_sys.egg-info/PKG-INFO
+fund_sys.egg-info/SOURCES.txt
+fund_sys.egg-info/dependency_links.txt
+fund_sys.egg-info/entry_points.txt
+fund_sys.egg-info/requires.txt
+fund_sys.egg-info/top_level.txt

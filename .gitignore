@@ -1,0 +1,13 @@
+build
+.vscode
+.idea
+.venv
+*~
+data
+*.pyc
+__pycache__/
+test
+.claude
+openspec/
+note/
+.github

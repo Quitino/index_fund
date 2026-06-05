@@ -1,0 +1,2 @@
+[console_scripts]
+fund = fund_sys.cli.main:cli
