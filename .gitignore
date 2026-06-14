@@ -11,3 +11,4 @@ test
 openspec/
 note/
 .github
+.DS_Store
